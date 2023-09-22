@@ -1,2 +1,3 @@
 # serpent-shuffle
- stay silly with the snake game
+
+stay silly with a snake game

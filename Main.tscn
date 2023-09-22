@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://rtt4ihpoh6ce"]
+
+[ext_resource type="Script" path="res://Grid.gd" id="1_vjgsn"]
+[ext_resource type="Script" path="res://SnakeMove.gd" id="2_4j82s"]
+[ext_resource type="Texture2D" uid="uid://b6rg88tvfvpf8" path="res://icon.svg" id="3_wdob0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Grid" type="Node2D" parent="."]
+script = ExtResource("1_vjgsn")
+
+[node name="Snake" type="Node2D" parent="." node_paths=PackedStringArray("grid")]
+script = ExtResource("2_4j82s")
+grid = NodePath("../Grid")
+
+[node name="Camera" type="Camera2D" parent="Snake"]
+limit_left = 0
+limit_top = 0
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Snake"]
+texture = ExtResource("3_wdob0")
