@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 3  # speed in pixels/sec
+@export var speed = 3
 var velocity = Vector2.ZERO
 
 @export var grid: Node2D
@@ -14,14 +14,18 @@ func _ready():
 func get_input():
 	if Input.is_action_pressed('right'):
 		velocity.x = 1
+		velocity.y = 0
 	if Input.is_action_pressed('left'):
-		velocity.x = 1
+		velocity.x = -1
+		velocity.y = 0
 	if Input.is_action_pressed('down'):
 		velocity.x = 0
-		velocity.y = -1
-	if Input.is_action_pressed('up'):
-		velocity.x = 0
 		velocity.y = 1
+	if Input.is_action_pressed('up'):
+		velocity.x = 0 
+		velocity.y = -1
+	
+	velocity = velocity.normalized() * speed
 
 func _physics_process(delta):
 	get_input()
